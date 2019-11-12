@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata>
-    <id>$title$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>SRPSwaggerWcf</id>
+    <version>1.0.1</version>
+    <title>SRPSwaggerWcf</title>
+    <authors>p.auriou</authors>
+    <owners>abelsilva</owners>
     <licenseUrl>https://raw.githubusercontent.com/abelsilva/swaggerwcf/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/abelsilva/swaggerwcf</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>SwaggerWcf custom</description>
     <releaseNotes>#160</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>swagger wcf .net c#</tags>

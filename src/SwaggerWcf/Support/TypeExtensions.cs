@@ -20,15 +20,28 @@ namespace SwaggerWcf.Support
         }
 
         public static string GetModelName(this Type type) =>
-            type.GetCustomAttribute<SwaggerWcfDefinitionAttribute>()?.ModelName ?? type.FullName;
+            type.GetCustomAttribute<SwaggerWcfDefinitionAttribute>()?.ModelName ?? ToGenericTypeString(type);
 
         public static string GetModelWrappedName(this Type type) =>
-            type.GetCustomAttribute<SwaggerWcfDefinitionAttribute>()?.ModelName ?? type.FullName;
+            type.GetCustomAttribute<SwaggerWcfDefinitionAttribute>()?.ModelName ?? ToGenericTypeString(type);
+
+        internal static string ToGenericTypeString(Type t)
+        {
+            if (!t.IsGenericType)
+                return t.Name;
+            string genericTypeName = t.GetGenericTypeDefinition().Name;
+            genericTypeName = genericTypeName.Substring(0,
+                genericTypeName.IndexOf('`'));
+            string genericArgs = string.Join("",
+                t.GetGenericArguments()
+                    .Select(ta => ToGenericTypeString(ta)).ToArray());
+            return genericTypeName + genericArgs;
+        }
 
         internal static Info GetServiceInfo(this TypeInfo typeInfo)
         {
             var infoAttr = typeInfo.GetCustomAttribute<SwaggerWcfServiceInfoAttribute>() ??
-                throw new ArgumentException($"{typeInfo.FullName} does not have {nameof(SwaggerWcfServiceInfoAttribute)}");
+                throw new ArgumentException($"{typeInfo.Name} does not have {nameof(SwaggerWcfServiceInfoAttribute)}");
 
             var info = (Info)infoAttr;
 
