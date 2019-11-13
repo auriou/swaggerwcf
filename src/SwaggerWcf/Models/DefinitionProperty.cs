@@ -53,7 +53,7 @@ namespace SwaggerWcf.Models
 
         public bool UniqueItems { get; set; }
 
-        public List<int> Enum { get; set; }
+        public List<string> Enum { get; set; }
 
         public decimal MultipleOf { get; set; }
 
@@ -155,11 +155,28 @@ namespace SwaggerWcf.Models
                 {
                     writer.WritePropertyName("enum");
                     writer.WriteStartArray();
-                    foreach (int e in Enum)
+                    foreach (var e in Enum)
                     {
                         writer.WriteValue(e);
                     }
                     writer.WriteEndArray();
+                    writer.WritePropertyName("x-ms-enum");
+                    writer.WriteStartObject();
+                    writer.WritePropertyName("name");
+                    writer.WriteValue(TypeFormat.TypeName);
+                    writer.WritePropertyName("modelAsString");
+                    writer.WriteValue(false);
+                    writer.WritePropertyName("values");
+                    writer.WriteStartArray();
+                    foreach (var e in Enum)
+                    {
+                        writer.WriteStartObject();
+                        writer.WritePropertyName("value");
+                        writer.WriteValue(e);
+                        writer.WriteEndObject();
+                    }
+                    writer.WriteEndArray();
+                    writer.WriteEndObject();
                 }
                 if (MultipleOf != decimal.MinValue)
                 {

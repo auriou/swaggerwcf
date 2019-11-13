@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>SRPSwaggerWcf</id>
-    <version>1.0.1</version>
+    <version>1.0.4</version>
     <title>SRPSwaggerWcf</title>
     <authors>p.auriou</authors>
     <owners>abelsilva</owners>
@@ -14,4 +14,7 @@
     <copyright>Copyright 2018</copyright>
     <tags>swagger wcf .net c#</tags>
   </metadata>
+  <dependencies>
+    <dependency id="Newtonsoft.Json" version="8.0.3" exclude="Build,Analyzers" />
+  </dependencies>
 </package>

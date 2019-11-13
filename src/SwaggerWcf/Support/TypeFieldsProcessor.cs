@@ -128,9 +128,9 @@ namespace SwaggerWcf.Support
                 }
             }
 
-            if ((prop.TypeFormat.Type == ParameterType.Integer && prop.TypeFormat.Format == "enum") || (prop.TypeFormat.Type == ParameterType.Array && prop.Items.TypeFormat.Format == "enum"))
+            if (prop.TypeFormat.Format == "enum")
             {
-                prop.Enum = new List<int>();
+                prop.Enum = new List<string>();
 
                 Type propType = propertyInfo.FieldType;
 
@@ -145,7 +145,7 @@ namespace SwaggerWcf.Support
                     string enumMemberDescription = DefinitionsBuilder.GetEnumDescription((Enum)enumMemberItem);
                     enumMemberDescription = (string.IsNullOrWhiteSpace(enumMemberDescription)) ? "" : $"({enumMemberDescription})";
                     int enumMemberValue = DefinitionsBuilder.GetEnumMemberValue(propType, enumName);
-                    if (prop.Description != null) prop.Enum.Add(enumMemberValue);
+                    prop.Enum.Add(enumMemberDescription);
                     enumDescription += $"    {enumName}{System.Web.HttpUtility.HtmlEncode(" = ")}{enumMemberValue} {enumMemberDescription}\r\n";
                 }
 

@@ -184,8 +184,9 @@ namespace SwaggerWcf.Support
                     "";
                 if (operationId == "")
                 {
-                    if (implementation.DeclaringType != null)
-                        operationId = implementation.DeclaringType.FullName + ".";
+                    //if (implementation.DeclaringType != null)
+                    //    operationId = implementation.DeclaringType.FullName + ".";
+                    //operationId += implementation.Name;
                     operationId += implementation.Name;
                 }
 
