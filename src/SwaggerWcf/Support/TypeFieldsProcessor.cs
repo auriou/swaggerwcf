@@ -137,22 +137,23 @@ namespace SwaggerWcf.Support
                 if (propType.IsGenericType && (propType.GetGenericTypeDefinition() == typeof(Nullable<>) || propType.GetGenericTypeDefinition() == typeof(List<>)))
                     propType = propType.GetEnumerableType();
 
-                string enumDescription = "";
+                //string enumDescription = "";
                 List<string> listOfEnumNames = propType.GetEnumNames().ToList();
                 foreach (string enumName in listOfEnumNames)
                 {
-                    var enumMemberItem = Enum.Parse(propType, enumName, true);
-                    string enumMemberDescription = DefinitionsBuilder.GetEnumDescription((Enum)enumMemberItem);
-                    enumMemberDescription = (string.IsNullOrWhiteSpace(enumMemberDescription)) ? "" : $"({enumMemberDescription})";
-                    int enumMemberValue = DefinitionsBuilder.GetEnumMemberValue(propType, enumName);
-                    prop.Enum.Add(enumMemberDescription);
-                    enumDescription += $"    {enumName}{System.Web.HttpUtility.HtmlEncode(" = ")}{enumMemberValue} {enumMemberDescription}\r\n";
+                    prop.Enum.Add(enumName);
+                    //var enumMemberItem = Enum.Parse(propType, enumName, true);
+                    //string enumMemberDescription = DefinitionsBuilder.GetEnumDescription((Enum)enumMemberItem);
+                    //enumMemberDescription = (string.IsNullOrWhiteSpace(enumMemberDescription)) ? "" : $"({enumMemberDescription})";
+                    //int enumMemberValue = DefinitionsBuilder.GetEnumMemberValue(propType, enumName);
+                    //prop.Enum.Add(enumMemberDescription);
+                    //enumDescription += $"    {enumName}{System.Web.HttpUtility.HtmlEncode(" = ")}{enumMemberValue} {enumMemberDescription}\r\n";
                 }
 
-                if (enumDescription != "")
-                {
-                    prop.Description += $"\r\n\r\n{enumDescription}";
-                }
+                //if (enumDescription != "")
+                //{
+                //    prop.Description += $"\r\n\r\n{enumDescription}";
+                //}
             }
 
             // Apply any options set in a [SwaggerWcfProperty]

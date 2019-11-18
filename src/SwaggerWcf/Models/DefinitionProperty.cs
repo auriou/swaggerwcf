@@ -84,6 +84,11 @@ namespace SwaggerWcf.Models
                         writer.WritePropertyName("format");
                         writer.WriteValue(TypeFormat.Format);
                     }
+                    if (SwaggerWcfEndpoint.InsertNotNullableAttribut)
+                    {
+                        writer.WritePropertyName("x-nullable");
+                        writer.WriteValue(false);
+                    }
                 }
                 if (TypeFormat.Type == ParameterType.Array && Items != null)
                 {
