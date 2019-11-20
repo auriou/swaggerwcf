@@ -53,7 +53,7 @@ namespace SwaggerWcf.Models
 
         public bool UniqueItems { get; set; }
 
-        public List<string> Enum { get; set; }
+        public Dictionary<string,int> Enum { get; set; }
 
         public decimal MultipleOf { get; set; }
 
@@ -162,7 +162,7 @@ namespace SwaggerWcf.Models
                     writer.WriteStartArray();
                     foreach (var e in Enum)
                     {
-                        writer.WriteValue(e);
+                        writer.WriteValue(e.Value);
                     }
                     writer.WriteEndArray();
                     writer.WritePropertyName("x-ms-enum");
@@ -177,7 +177,9 @@ namespace SwaggerWcf.Models
                     {
                         writer.WriteStartObject();
                         writer.WritePropertyName("value");
-                        writer.WriteValue(e);
+                        writer.WriteValue(e.Value);
+                        writer.WritePropertyName("name");
+                        writer.WriteValue(e.Key);
                         writer.WriteEndObject();
                     }
                     writer.WriteEndArray();
