@@ -41,6 +41,7 @@ namespace SwaggerWcf
         public static bool InsertNotNullableAttribut { get; set; }
 
         public static bool NotUseDataMemberAttribute { get; set; }
+        public static List<Type> NotUseDataMemberAttributeExceptedType { get; set; } = new List<Type>();
 
         public static Func<string, List<string>, List<string>> FilterVisibleTags { get; set; } =
             (string path, List<string> visibleTags) => visibleTags;

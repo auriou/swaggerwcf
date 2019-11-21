@@ -74,7 +74,8 @@ namespace SwaggerWcf.Support
             DefinitionProperty prop = new DefinitionProperty { Title = propertyInfo.Name };
 
             DataMemberAttribute dataMemberAttribute = propertyInfo.GetCustomAttribute<DataMemberAttribute>();
-            if (!SwaggerWcfEndpoint.NotUseDataMemberAttribute && dataMemberAttribute != null)
+            var useDataMember = SwaggerWcfEndpoint.NotUseDataMemberAttributeExceptedType.Contains(propertyInfo.ReflectedType) || !SwaggerWcfEndpoint.NotUseDataMemberAttribute;
+            if (useDataMember && dataMemberAttribute != null)
             {
                 if (!string.IsNullOrEmpty(dataMemberAttribute.Name))
                     prop.Title = dataMemberAttribute.Name;
