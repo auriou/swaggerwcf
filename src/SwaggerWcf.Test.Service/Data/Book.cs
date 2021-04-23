@@ -33,5 +33,9 @@ namespace SwaggerWcf.Test.Service.Data
         [DataMember]
         [Description("Book Tags")]
         public string[] Tags { get; set; }
+
+        [DataMember]
+        [Description("Book Bytes")]
+        public byte[] TestBytes { get; set; }
     }
 }

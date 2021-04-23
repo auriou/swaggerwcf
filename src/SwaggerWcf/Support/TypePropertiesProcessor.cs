@@ -119,13 +119,20 @@ namespace SwaggerWcf.Support
                 {
                     TypeFormat subTypeFormat = Helpers.MapSwaggerType(subType, null);
 
-                    if (subTypeFormat.Type == ParameterType.Object)
-                        typesStack.Push(subType);
-
-                    prop.Items = new ParameterItems
+                    if (subType == typeof(byte) || subType == typeof(sbyte))
                     {
-                        TypeFormat = subTypeFormat
-                    };
+                        prop.TypeFormat = subTypeFormat;
+                    }
+                    else
+                    {
+                        if (subTypeFormat.Type == ParameterType.Object)
+                            typesStack.Push(subType);
+
+                        prop.Items = new ParameterItems
+                        {
+                            TypeFormat = subTypeFormat
+                        };
+                    }
                 }
             }
 

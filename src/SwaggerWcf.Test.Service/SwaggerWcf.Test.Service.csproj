@@ -96,9 +96,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwaggerWcf\SwaggerWcf.csproj">
-      <Project>{0ad6efbc-412f-4c0e-8e0a-0faf28151b55}</Project>
-      <Name>SwaggerWcf</Name>
+    <ProjectReference Include="..\SwaggerWcf\SRPSwaggerWcf.csproj">
+      <Project>{54831116-cdb8-42aa-a29e-5b96bec6d064}</Project>
+      <Name>SRPSwaggerWcf</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

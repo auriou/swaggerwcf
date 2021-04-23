@@ -21,7 +21,7 @@ namespace SwaggerWcf.Test.Service
             // route with inherited methods on a base class
             RouteTable.Routes.Add(new ServiceRoute("v1/authors", new WebServiceHostFactory(), typeof(AuthorService)));
             
-            RouteTable.Routes.Add(new ServiceRoute("api-docs", new WebServiceHostFactory(), typeof(SwaggerWcfEndpoint)));
+            RouteTable.Routes.Add(new ServiceRoute("swagger", new WebServiceHostFactory(), typeof(SwaggerWcfEndpoint)));
         }
 
         private static List<string> FilterVisibleTags(string path, List<string> visibleTags)
